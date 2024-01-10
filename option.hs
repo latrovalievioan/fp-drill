@@ -49,6 +49,21 @@ div2_ x = Some x
 div2_ThenIncrement :: Int -> MaybeInt
 div2_ThenIncrement = increment_ . div2_
 
+-- If we want to avoid defining increment_ again only so that it can
+-- receive and return an Option type (MaybeInt)
+-- We could use something called a Functor
+-- Functor is definded by having an fmap function which provides us with a way to solve our "problem"
+instance Functor Option 
+  where
+    fmap :: (a -> b) -> Option a -> Option b
+    fmap fn (Some x) = Some $ fn x
+    fmap _ _ = None
+
+-- Notice how we fmaped the increment function with the result of div2_ which is MaybeInt
+div2_ThenIncrementWithFmap :: Int -> MaybeInt
+div2_ThenIncrementWithFmap = fmap increment . div2_
+
+
 sumMaybeInts :: MaybeInt -> MaybeInt -> MaybeInt
 sumMaybeInts (Some x) (Some y) = Some (x + y)
 sumMaybeInts _ _ = None
@@ -66,9 +81,3 @@ safeSQRT x
   | x < 0 = None
   | otherwise = Some (sqrt x)
 
--- instance Functor Option 
---   where
---     fmap :: (a -> b) -> Option a -> Option b
---     fmap fn (Some x) = Some $ fn x
---     fmap _ _ = None
---
