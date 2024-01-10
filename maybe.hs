@@ -81,3 +81,10 @@ safeSQRT x
   | x < 0 = None
   | otherwise = Some (sqrt x)
 
+-- Option is implemented in Haskell with the name Maybe
+-- Just is Some
+-- Nothing is None
+type NativeMaybeInt = Maybe Int
+nativeSafeDiv :: Int -> Int -> NativeMaybeInt
+nativeSafeDiv _ 0 = Nothing
+nativeSafeDiv x y = Just (div x y)
