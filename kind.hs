@@ -1,0 +1,18 @@
+-- Value universe:
+-- 12, "hello", true...
+--
+-- We can group those values into sets called "types":
+-- Int, String, Int -> Boolean, Option<Boolean>
+--
+-- We can group types into sets called "kinds":
+-- - Kind universe is an abstraction over the Type universe
+-- - Kind is a classification for types and type constructors
+--
+-- Example:
+-- Value: 5, Type: Int, Kind: Type
+-- Value: (\x -> x + 1) Type: Int -> Int, Kind: Type -> Type
+-- Type: Option, Kind: Type -> Type
+-- Type: Either, Kind: Type -> Type -> Type
+--
+-- - Type constructors in the Kind universe are like Functions in the Type universe.
+
