@@ -1,6 +1,6 @@
 # My FP journey
 
-🔵 The goal of this repo is for me to understand what a Monad is, so that I can flex on other Tech bros.
+🔵 The goal of this repo is for me to understand what a Monad is, so that I can flex on other tech bros.
 
 🔴 The actual goal is for me to explore the functional programming world in hope that I get a tiny bit smarter.
 
