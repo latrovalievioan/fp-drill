@@ -31,3 +31,11 @@ instance Applicative Option where
 -- apply usage examples:
 sumTwoOptions :: Option Int -> Option Int -> Option Int
 sumTwoOptions ox oy = ((+) <$> ox) <*> oy
+
+instance Monad Option where
+  (>>=) :: Option a -> (a -> Option b) -> Option b
+  (>>=) (Some a) fn = fn a
+  (>>=) None _ = None
+
+
+fn = Some 4 >>= (\x -> return (x + 6))
