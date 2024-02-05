@@ -20,7 +20,6 @@ safeDivThenIncrement x y = increment <$> safeDivWithError x y
 instance Applicative (Either' l) where
   (<*>) :: Either' l (a -> b) -> Either' l a -> Either' l b
   (<*>) (Right' fn) (Right' val) = Right' $ fn val
-  (<*>) (Left' str) (Left' str1) = Left' str
   (<*>) (Left' str) _ = Left' str
   (<*>) _ (Left' str) = Left' str
 
